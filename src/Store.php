@@ -70,8 +70,8 @@ class Store
 
     static function find($search_id)
     {
-        $found_store = null;
         $stores = Store::getAll();
+        $found_store = null;
 
         foreach ($stores as $store)
         {

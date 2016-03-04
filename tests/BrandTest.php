@@ -87,6 +87,24 @@
             $this->assertEquals([$test_brand2], $result);
         }
 
+        function test_find()
+        {
+            //Arrange
+            $brand_name = "Fluevogs";
+            $test_brand = new Brand($brand_name);
+            $test_brand->save();
+
+            $brand_name2 = "XtraTufs";
+            $test_brand2 = new Brand($brand_name2);
+            $test_brand2->save();
+
+            //Act
+            $result = Brand::find($test_brand2->getId());
+
+            //Assert
+            $this->assertEquals($test_brand2, $result);
+        }
+
     }
 
 ?>
