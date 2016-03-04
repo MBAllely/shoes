@@ -9,9 +9,9 @@
             <h2>{{ store.getStoreName }}</h2>
             <h3>{{ store.getPhone }}</h3>
             {% if storebrands is not empty %}
-            <h4>{{ store.getStoreName }} is currently selling: </h4>
+                <h4>{{ store.getStoreName }} is currently selling: </h4>
                 {% for brand in store_brands %}
-                    <li><a href="/brand/{id}"> {{ brand.getBrandName }}</a></li>
+                    <li><a href="/brand/{{ brand.getId }}"> {{ brand.getBrandName }}</a></li>
                 {% endfor %}
             {% else %}
                 <h5>This store is not currently selling and brands</h5>

@@ -89,5 +89,14 @@
         ));
     });
 
+    $app->get("/brand/{id}", function($id) use ($app) {
+        $brand = Brand::find($id);
+        return $app['twig']->render('brand.html.twig', array(
+            'brands' => Brand::getAll(),
+            'storebrands' => $brand->getStores(),
+            'store' => Store::getAll()
+        ));
+    });
+
     return $app;
 ?>

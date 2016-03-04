@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include '/includes/head.html.twig' %}
+        <title>Shoes | {{ brand.getBrandName }}</title>
+    </head>
+    <body>
+        <div class="container">
+            <h2>{{ brand.getBrandName }}</h2>
+            {% if storebrands is not empty %}
+                <h4>{{ brand.getBrandName }} is currently sold at:</h4>
+                {% for store in storebrands %}
+                    <li><a href="/store/{{ store.getId }}">{{ store.getName }}</a></li>
+                {% endfor %}
+            {% else %}
+                <h5>This brand is not currently being sold anywhere</h5>
+            {% endif %}
+
+            <form action="/brand/{{ brand.getId }}" method="post">
+                <input type="hidden" name="name" value="{{ brand.getId }}">
+            </form>
+
+            <a href="/">Home</a>
+
+        </div>
+    </body>
+</html>
