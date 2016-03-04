@@ -15,10 +15,10 @@ _The goal of this code review is to show basic understanding and competency with
 
 1. Fork and clone this repository from [gitHub](https://github.com/MBAllely/shoes).
 2. In the terminal, navigate to the root directory of the project and run the command: __composer install__ .
-3. In the terminal, start SQL by running the command: __mysql.server start__, and then run the command __mysql -uroot -proot__.
-4. In another terminal tab, start Apache by running the command __apachectl start__.
-5. In your browser, navigate to __localhost:8080/phpmyadmin__. Click the Import tab, choose the file for _shoes.sql_ in the _shoes_ project folder, and press go.
-6. On a mac: Create a local server in the /web directory within the project folder  the command: __php -S localhost:8000__.  On a windows, shrug.  Sorry, hoss.
+3. In the terminal, start SQL by running the command: __mysql.server start__, and then run the command __mysql -uroot -proot__ .
+4. In another terminal tab, start Apache by running the command __apachectl start__ .
+5. In your browser, navigate to __localhost:8080/phpmyadmin__ . Click the Import tab, choose the file for _shoes.sql_ in the _shoes_ project folder, and press go.
+6. On a mac: Create a local server in the /web directory within the project folder  the command: __php -S localhost:8000__ .  On a windows, shrug.  Sorry, hoss.
 7. Open the directory http://localhost:8000 in any standard web browser. (#chrome4lyfe)
 
 ## IF YOU NEED TO CREATE THE DATABASE
