@@ -11,7 +11,7 @@
             {% if storebrands is not empty %}
                 <h4>{{ brand.getBrandName }} is currently sold at:</h4>
                 {% for store in storebrands %}
-                    <li><a href="/store/{{ store.getId }}">{{ store.getName }}</a></li>
+                    <li><a href="/store/{{ store.getId }}">{{ store.getStoreName }}</a></li>
                 {% endfor %}
             {% else %}
                 <h5>This brand is not currently being sold anywhere</h5>

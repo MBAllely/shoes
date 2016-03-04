@@ -109,5 +109,16 @@
         ));
     });
 
+    $app->post("/brand/{id}", function($id) use ($app) {
+        $brand = Brand::find($id);
+        $store = Store::find($_POST['id']);
+        $brand->addStore($store);
+        return $app['twig']->render('brand.html.twig', array(
+            'brand' => $brand,
+            'storebrands' => $brand->getStores(),
+            'stores' => Store::getAll()
+        ));
+    });
+
     return $app;
 ?>
