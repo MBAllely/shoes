@@ -13,7 +13,30 @@ class Store
         $this->id = $id;
     }
 
-    
+    function getStoreName()
+    {
+        return $this->store_name;
+    }
+
+    function setStoreName($new_store_name)
+    {
+        $this->store_name = $new_store_name;
+    }
+
+    function getPhone()
+    {
+        return $this->phone;
+    }
+
+    function setPhone($new_phone)
+    {
+        $this->phone = $new_phone;
+    }
+
+    function getId()
+    {
+        return $this->id;
+    }
 
 }
  ?>
