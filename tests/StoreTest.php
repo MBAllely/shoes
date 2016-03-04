@@ -93,5 +93,25 @@
             $this->assertEquals($new_store_name, $result1);
             $this->assertEquals($new_phone, $result2);
         }
+
+        function test_find()
+        {
+            //Arrange
+            $store_name = "Shuzy Q";
+            $phone = "907-777-44444";
+            $test_store = new Store($store_name, $phone);
+            $test_store->save();
+
+            $store_name2 = "STOMPERS";
+            $phone2 = "907-999-5555";
+            $test_store2 = new Store($store_name2, $phone2);
+            $test_store2->save();
+
+            //Act
+            $result = Store::find($test_store2->getId());
+
+            //Assert
+            $this->assertEquals($test_store2, $result);
+        }
     }
  ?>
