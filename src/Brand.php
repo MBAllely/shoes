@@ -42,6 +42,16 @@ class Brand
         return $brands;
     }
 
+    function addStore()
+    {
+
+    }
+
+    function getStores()
+    {
+        
+    }
+
     static function find($search_id)
     {
         $brands = Brand::getAll();

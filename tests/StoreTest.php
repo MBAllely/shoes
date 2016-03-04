@@ -136,5 +136,23 @@
             //Assert
             $this->assertEquals([$test_store2], $result);
         }
+
+        function test_addBrand()
+        {
+            $brand_name = "XtraTufs";
+            $test_brand = new Brand($brand_name);
+            $test_brand->save();
+
+            $store_name = "Shuzy Q";
+            $phone = "907-777-44444";
+            $test_store = new Store($store_name, $phone);
+            $test_store->save();
+
+            //Act
+            $test_store->addBrand($test_brand);
+
+            //Assert
+            $this->assertEquals($test_store->getBrands(), [$test_brand]);
+        }
     }
  ?>
