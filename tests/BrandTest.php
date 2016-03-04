@@ -68,6 +68,25 @@
             $this->assertEquals([$test_brand, $test_brand2], $result);
         }
 
+        function test_deleteOneBrand()
+        {
+            //Arrange
+            $brand_name = "Fluevogs";
+            $test_brand = new Brand($brand_name);
+            $test_brand->save();
+
+            $brand_name2 = "XtraTufs";
+            $test_brand2 = new Brand($brand_name2);
+            $test_brand2->save();
+
+            //Act
+            $test_brand->deleteOneBrand();
+            $result = Brand::getAll();
+
+            //Assert
+            $this->assertEquals([$test_brand2], $result);
+        }
+
     }
 
 ?>
