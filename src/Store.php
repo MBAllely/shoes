@@ -83,6 +83,12 @@ class Store
         return $store;
     }
 
+    function deleteOneStore()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+        $GLOBALS['DB']->exec("DELETE FROM store_brand WHERE id = {$this->getId()};");
+    }
+
     static function deleteAll()
     {
         $GLOBALS['DB']->exec("DELETE FROM stores;");
