@@ -5,6 +5,8 @@
 
     $app = new Silex\Application();
 
+
+
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views'
     ));
@@ -39,6 +41,25 @@
 
     $app->get("/store/{id}", function($id) use ($app) {
         $store = Store::find($id);
+        return $app['twig']->render('store.html.twig', array(
+            'store' => $store,
+            'store_brands' => $store->getBrands(),
+            'brands' => Brand::getAll()
+        ));
+    });
+
+    $app->get("/store/{id}/edit", function($id) use ($app) {
+        $store = Store::find($id);
+        return $app['twig']->render('store_edit.html.twig', array(
+            'store' => $store,
+            'store_brands' => $store->getBrands(),
+            'brands' => Brand::getAll()
+        ));
+    });
+
+    $app->patch("/store/{id}", function($id) use ($app) {
+        $store = Store::find($id);
+        $store->update($_POST['new_store_name'], $_POST['new_phone']);
         return $app['twig']->render('store.html.twig', array(
             'store' => $store,
             'store_brands' => $store->getBrands(),

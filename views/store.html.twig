@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include '/includes/head.html.twig' %}
+        <title>Shoes | {{ store.getStoreName }}</title>
+    </head>
+    <body>
+        <div class="container">
+            <h2>{{ store.getStoreName }}</h2>
+            <h3>{{ store.getPhone }}</h3>
+            {% if storebrands is not empty %}
+            <h4>{{ store.getStoreName }} is currently selling: </h4>
+                {% for brand in store_brands %}
+                    <li><a href="/brand/{id}"> {{ brand.getBrandName }}</a></li>
+                {% endfor %}
+            {% else %}
+                <h5>This store is not currently selling and brands</h5>
+            {% endif %}
+
+            <form action="/store/{{ store.getId }}" method="post">
+                <input type="hidden" name="name" value="{{ store.getId }}">
+                <label>Add brands to this store:</label>
+                <select name="id">
+                    {% for brand in brands %}
+                        <option value="{{ brand.getId }}">{{ brand.getBrandName }}</option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit" class="btn btn-primary">Add brand</button>
+            </form>
+
+            <form action="/store/{{ store.getId }}/edit">
+                <button type="submit" class="btn btn-sm btn-warning">Edit this store</button>
+            </form>
+
+            <a href="/">Home</a>
+
+        </div>
+    </body>
+</html>
