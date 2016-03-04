@@ -91,8 +91,9 @@
 
     $app->get("/brand/{id}", function($id) use ($app) {
         $brand = Brand::find($id);
+        var_dump($brand);
         return $app['twig']->render('brand.html.twig', array(
-            'brands' => Brand::getAll(),
+            'brand' => $brand,
             'storebrands' => $brand->getStores(),
             'store' => Store::getAll()
         ));

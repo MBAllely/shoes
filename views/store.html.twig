@@ -8,6 +8,7 @@
         <div class="container">
             <h2>{{ store.getStoreName }}</h2>
             <h3>{{ store.getPhone }}</h3>
+            
             {% if storebrands is not empty %}
                 <h4>{{ store.getStoreName }} is currently selling: </h4>
                 {% for brand in store_brands %}
