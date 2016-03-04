@@ -16,7 +16,7 @@
     {
         protected function tearDown()
         {
-            // Brand::deleteAll();
+            Brand::deleteAll();
         }
 
         function test_getInfo()
@@ -35,7 +35,38 @@
             $this->assertEquals($id, $result2);
         }
 
+        function test_save()
+        {
+            //Arrange
+            $brand_name = "Fluevogs";
+            $id = 1;
+            $test_brand = new Brand($brand_name, $id);
+            $test_brand->save();
 
+            //Act
+            $result = Brand::getAll();
+
+            //Assert
+            $this->assertEquals([$test_brand], $result);
+        }
+
+        function test_getAll()
+        {
+            //Arrange
+            $brand_name = "Fluevogs";
+            $test_brand = new Brand($brand_name);
+            $test_brand->save();
+
+            $brand_name2 = "XtraTufs";
+            $test_brand2 = new Brand($brand_name2);
+            $test_brand2->save();
+
+            //Act
+            $result = Brand::getAll();
+
+            //Assert
+            $this->assertEquals([$test_brand, $test_brand2], $result);
+        }
 
     }
 
