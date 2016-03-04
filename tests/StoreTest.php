@@ -14,6 +14,11 @@
 
     class ClassTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            Store::deleteAll();
+        }
+
         function test_getInfo()
         {
             // Arrange
@@ -32,22 +37,22 @@
             $this->assertEquals($phone, $result2);
             $this->assertEquals($id, $result3);
         }
-        // 
-        // function test_save()
-        // {
-        //     //Arrange
-        //     $store_name = "Shuzy Q";
-        //     $phone = "907-777-44444";
-        //     $test_store = new Store($store_name, $phone);
-        //
-        //     //Act
-        //     $test_store->save();
-        //     $result = Store::getAll();
-        //
-        //     //Assert
-        //     $this->assertEquals([$test_store], $result);
-        // }
-        //
+
+        function test_save()
+        {
+            //Arrange
+            $store_name = "Shuzy Q";
+            $phone = "907-777-44444";
+            $test_store = new Store($store_name, $phone);
+
+            //Act
+            $test_store->save();
+            $result = Store::getAll();
+
+            //Assert
+            $this->assertEquals([$test_store], $result);
+        }
+
         // function test_getAll()
         // {
         //     //Arrange
