@@ -16,7 +16,7 @@
             {% endif %}
 
             <h4>Add a store:</h4>
-            
+
             <form action="/stores" method="post">
                 <label for="store_name">Store Name:</label>
                 <input type="text" name="store_name">
@@ -25,6 +25,10 @@
                 <input type="text" name="phone">
 
                 <button type="submit" name="button">Add store</button>
+            </form>
+
+            <form action="/stores/delete" method="post">
+                <button type="submit" class="btn btn-danger">Delete all stores</button>
             </form>
 
             <a href="/">Home</a>

@@ -78,6 +78,13 @@
         ));
     });
 
+    $app->post("/stores/delete", function() use ($app) {
+        Store::deleteAll();
+        return $app['twig']->render('stores.html.twig', array(
+            'stores' => Store::getAll()
+        ));
+    });
+
     $app->delete("/store/{id}/delete", function($id) use ($app) {
         $store = Store::find($id);
         $store->deleteOneStore();
