@@ -5,7 +5,7 @@
 
     $app = new Silex\Application();
 
-
+    $app['debug'] = true;
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views'
@@ -43,7 +43,18 @@
         $store = Store::find($id);
         return $app['twig']->render('store.html.twig', array(
             'store' => $store,
-            'store_brands' => $store->getBrands(),
+            'storebrands' => $store->getBrands(),
+            'brands' => Brand::getAll()
+        ));
+    });
+
+    $app->post("/store/{id}", function($id) use ($app) {
+        $store = Store::find($id);
+        $brand = Brand::find($_POST['id']);
+        $store->addBrand($brand);
+        return $app['twig']->render('store.html.twig', array(
+            'store' => $store,
+            'storebrands' => $store->getBrands(),
             'brands' => Brand::getAll()
         ));
     });
