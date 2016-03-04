@@ -106,23 +106,6 @@ class Store
         return $brands;
     }
 
-    // function getCourses()
-    // {
-    //     $returned_courses = $GLOBALS['DB']->query("SELECT courses.* FROM students
-    //         JOIN enrollment ON (students.id = enrollment.student_id)
-    //         JOIN courses ON (enrollment.course_id = courses.id)
-    //         WHERE students.id = {$this->getId()};");
-    //     $courses = [];
-    //     foreach($returned_courses as $course) {
-    //         $course_name = $course['course_name'];
-    //         $course_num = $course['course_num'];
-    //         $id = $course['id'];
-    //         $new_course = new Course($course_name, $course_num, $id);
-    //         array_push($courses, $new_course);
-    //     }
-    //     return $courses;
-    // }
-
     function deleteOneStore()
     {
         $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");

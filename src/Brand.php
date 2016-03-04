@@ -42,14 +42,28 @@ class Brand
         return $brands;
     }
 
-    function addStore()
+    function addStore($store)
     {
-
+        $GLOBALS['DB']->exec("INSERT INTO store_brand (store_id, brand_id) VALUES ({$store->getId()}, {$this->getId()});");
     }
 
     function getStores()
     {
-        
+        $returned_stores = $GLOBALS['DB']->query("SELECT stores.* from brands
+            JOIN store_brand ON (brands.id = store_brand.brand_id)
+            JOIN stores ON (store_brand.store_id = stores.id)
+            WHERE brands.id = {$this->getId()};");
+        $stores = [];
+
+        foreach ($returned_stores as $store)
+        {
+            $store_name = $store['store_name'];
+            $phone = $store['phone'];
+            $id = $store['id'];
+            $new_store = new Store($store_name, $phone, $id);
+            array_push($stores, $new_store);
+        }
+        return $stores;
     }
 
     static function find($search_id)
