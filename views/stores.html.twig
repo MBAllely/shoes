@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include '/includes/head.html.twig' %}
+        <title>Shoes | Stores</title>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Stores</h2>
+            {% if stores is not empty %}
+                {% for store in stores %}
+                    <h4><a href="/store/{{ store.getId }}">{{ store.getStoreName }}</a></h4>
+                {% endfor %}
+            {% else %}
+                <h5>There are no stores yet!</h5>
+            {% endif %}
+
+            <form action="/stores" method="post">
+                <label for="store_name">Store Name:</label>
+                <input type="text" name="store_name">
+
+                <label for="phone">Phone number:</label>
+                <input type="text" name="phone">
+
+                <button type="submit" name="button">Add store</button>
+            </form>
+
+            <a href="/">Home</a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include '/includes/head.html.twig' %}
+        <title>Shoes | Brands</title>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Brands</h2>
+            {% if brands is not empty %}
+                {% for brand in brands %}
+                    <h4><a href="/brand/{{ brand.getId }}">{{ brand.getBrandName }}</a></h4>
+                {% endfor %}
+            {% else %}
+                <h5>There are no brands yet!</h5>
+            {% endif %}
+
+            <a href="/">Home</a>
+            
+        </div>
+    </body>
+</html>
