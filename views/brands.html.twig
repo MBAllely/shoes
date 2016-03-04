@@ -15,8 +15,17 @@
                 <h5>There are no brands yet!</h5>
             {% endif %}
 
+            <h4>Add a brand:</h4>
+
+            <form action="/brands" method="post">
+                <label for="brand_name">Brand name:</label>
+                <input type="text" name="brand_name">
+
+                <button type="submit" class="btn btn-primary">Add Brand</button>
+            </form>
+
             <a href="/">Home</a>
-            
+
         </div>
     </body>
 </html>
