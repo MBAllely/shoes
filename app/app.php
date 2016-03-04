@@ -63,7 +63,7 @@
         $store = Store::find($id);
         return $app['twig']->render('store_edit.html.twig', array(
             'store' => $store,
-            'store_brands' => $store->getBrands(),
+            'storebrands' => $store->getBrands(),
             'brands' => Brand::getAll()
         ));
     });
@@ -73,7 +73,7 @@
         $store->update($_POST['new_store_name'], $_POST['new_phone']);
         return $app['twig']->render('store.html.twig', array(
             'store' => $store,
-            'store_brands' => $store->getBrands(),
+            'storebrands' => $store->getBrands(),
             'brands' => Brand::getAll()
         ));
     });
