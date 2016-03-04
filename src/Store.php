@@ -60,6 +60,14 @@ class Store
         return $stores;
     }
 
+    function update($new_store_name, $new_phone)
+    {
+        $GLOBALS['DB']->exec("UPDATE stores SET store_name = '{$new_store_name}' WHERE id = {$this->getId()};");
+        $this->setStoreName($new_store_name);
+        $GLOBALS['DB']->exec("UPDATE stores SET phone = '{$new_phone}' WHERE id = {$this->getId()};");
+        $this->setPhone($new_phone);
+    }
+
     static function deleteAll()
     {
         $GLOBALS['DB']->exec("DELETE FROM stores;");
