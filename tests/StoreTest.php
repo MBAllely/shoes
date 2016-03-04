@@ -6,17 +6,19 @@
     */
 
     require_once __DIR__ . '/../src/Store.php';
+    require_once __DIR__ . '/../src/Brand.php';
 
     $server = 'mysql:host=localhost;dbname=shoes_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
-    class ClassTest extends PHPUnit_Framework_TestCase
+    class StoreTest extends PHPUnit_Framework_TestCase
     {
         protected function tearDown()
         {
             Store::deleteAll();
+            // Brand::deleteAll();
         }
 
         function test_getInfo()
