@@ -4,8 +4,8 @@
     require_once __DIR__."/../src/Brand.php";
 
     $app = new Silex\Application();
-
-    $app['debug'] = true;
+    //
+    // $app['debug'] = true;
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views'
@@ -37,7 +37,7 @@
         return $app['twig']->render('stores.html.twig', array(
             'stores' => Store::getAll()
         ));
-    });
+   });
 
     $app->get("/store/{id}", function($id) use ($app) {
         $store = Store::find($id);
@@ -48,7 +48,7 @@
         ));
     });
 
-    $app->post("/store/{id}", function($id) use ($app) {
+    $app->post("/store/{id}/add_brand", function($id) use ($app) {
         $store = Store::find($id);
         $brand = Brand::find($_POST['id']);
         $store->addBrand($brand);
@@ -124,6 +124,13 @@
             'brand' => $brand,
             'storebrands' => $brand->getStores(),
             'stores' => Store::getAll()
+        ));
+    });
+
+    $app->post("/brands/delete", function() use ($app) {
+        Brand::deleteAll();
+        return $app['twig']->render('brands.html.twig', array(
+            'brands' => Brand::getAll()
         ));
     });
 

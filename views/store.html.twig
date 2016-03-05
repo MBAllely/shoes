@@ -18,7 +18,7 @@
                 <h5>This store is not currently selling and brands</h5>
             {% endif %}
 
-            <form action="/store/{{ store.getId }}" method="post">
+            <form action="/store/{{ store.getId }}/add_brand" method="post">
                 <input type="hidden" name="name" value="{{ store.getId }}">
                 <label>Add brands to this store:</label>
                 <select name="id">

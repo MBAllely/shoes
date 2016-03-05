@@ -165,6 +165,10 @@
             $test_brand2 = new Brand($brand_name2);
             $test_brand2->save();
 
+            $brand_name3 = "Fluevogs";
+            $test_brand3 = new Brand($brand_name3);
+            $test_brand3->save();
+
             $store_name = "Shuzy Q";
             $phone = "907-777-44444";
             $test_store = new Store($store_name, $phone);
@@ -173,9 +177,10 @@
             //Act
             $test_store->addBrand($test_brand);
             $test_store->addBrand($test_brand2);
+            $test_store->addBrand($test_brand3);
 
             //Assert
-            $this->assertEquals([$test_brand, $test_brand2], $test_store->getBrands());
+            $this->assertEquals([$test_brand, $test_brand2, $test_brand3], $test_store->getBrands());
         }
     }
  ?>

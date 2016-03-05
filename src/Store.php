@@ -80,7 +80,7 @@ class Store
                 $found_store = $store;
             }
         }
-        return $store;
+        return $found_store;
     }
 
     function addBrand($brand)

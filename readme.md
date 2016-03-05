@@ -36,7 +36,7 @@ _The goal of this code review is to show basic understanding and competency with
 
 ## Known Bugs
 
-None.
+It doesn't like single quotes in the input.
 
 ## Support and contact details
 

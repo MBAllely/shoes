@@ -141,12 +141,18 @@
             $test_store2 = new Store($store_name2, $phone2);
             $test_store2->save();
 
+            $store_name3 = "Bipedals Ltd.";
+            $phone3 = "907-555-3333";
+            $test_store3 = new Store($store_name3, $phone3);
+            $test_store3->save();
+
             //Act
             $test_brand->addStore($test_store);
             $test_brand->addStore($test_store2);
+            $test_brand->addStore($test_store3);
 
             //Assert
-            $this->assertEquals([$test_store, $test_store2], $test_brand->getStores());
+            $this->assertEquals([$test_store, $test_store2, $test_store3], $test_brand->getStores());
         }
 
     }
