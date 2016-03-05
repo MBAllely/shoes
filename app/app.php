@@ -4,8 +4,8 @@
     require_once __DIR__."/../src/Brand.php";
 
     $app = new Silex\Application();
-    //
-    // $app['debug'] = true;
+
+    $app['debug'] = true;
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views'
@@ -127,6 +127,25 @@
         ));
     });
 
+    $app->get("/brand/{id}/edit", function($id) use ($app) {
+        $brand = Brand::find($id);
+        return $app['twig']->render('brand_edit.html.twig', array(
+            'brand' => $brand,
+            'storebrands' => $brand->getStores(),
+            'stores' => Store::getAll()
+        ));
+    });
+
+    $app->patch("/brand/{id}", function($id) use ($app) {
+        $brand = Brand::find($id);
+        $brand->update($_POST['new_brand_name']);
+        return $app['twig']->render('brand.html.twig', array(
+            'brand' => $brand,
+            'storebrands' => $brand->getStores(),
+            'stores' => Store::getAll()
+        ));
+    });
+
     $app->post("/brands/delete", function() use ($app) {
         Brand::deleteAll();
         return $app['twig']->render('brands.html.twig', array(
@@ -137,7 +156,7 @@
     $app->delete("/brand/{id}/delete", function($id) use ($app) {
         $brand = Brand::find($id);
         $brand->deleteOneBrand();
-        return $app->['twig']->render('brands.html.twig', array(
+        return $app['twig']->render('brands.html.twig', array(
             'brands' => Brand::getAll()
         ));
     });

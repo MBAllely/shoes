@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include '/includes/head.html.twig' %}
+        <title>Shoes | {{ brand.getBrandName }}</title>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Edit {{ brand.getBrandName }}</h2>
+
+            <form action="/brand/{{ brand.getId }}" method="post">
+                <input type="hidden" name="_method" value="patch">
+
+                <label for="new_brand_name">New brand name</label>
+                <input type="text" name="new_brand_name" value="{{ brand.getBrandName }}">
+
+                <button type="submit" class="btn btn-success">Submit changes</button>
+            </form>
+
+            <form action="/brand/{{ brand.getId }}/delete" method="post">
+                <input name="_method" type="hidden" value="delete">
+                <button type="submit" class="btn btn-danger">Delete this brand</button>
+            </form>
+
+            <a href="/">Home</a>
+
+        </div>
+    </body>
+</html>
