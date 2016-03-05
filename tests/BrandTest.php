@@ -155,6 +155,22 @@
             $this->assertEquals([$test_store, $test_store2, $test_store3], $test_brand->getStores());
         }
 
+        function test_update()
+        {
+            //Arrange
+            $brand_name = "Fluevogs";
+            $test_brand = new Brand($brand_name);
+            $test_brand->save();
+
+            $new_brand_name = 'Bluebogs';
+
+            //Act
+            $test_brand->update($new_brand_name);
+
+            //Assert
+            $this->assertEquals($new_brand_name, $test_brand->getBrandName());
+        }
+
     }
 
 ?>

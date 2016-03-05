@@ -16,6 +16,11 @@ class Brand
         return $this->brand_name;
     }
 
+    function setBrandName($new_brand_name)
+    {
+        $this->brand_name = $new_brand_name;
+    }
+
     function getId()
     {
         return $this->id;
@@ -64,6 +69,12 @@ class Brand
             array_push($stores, $new_store);
         }
         return $stores;
+    }
+
+    function update($new_brand_name)
+    {
+        $GLOBALS['DB']->exec("UPDATE brands SET brand_name = '{$new_brand_name}' WHERE id = {$this->getId()};");
+        $this->setBrandName($new_brand_name);
     }
 
     static function find($search_id)

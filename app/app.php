@@ -134,5 +134,13 @@
         ));
     });
 
+    $app->delete("/brand/{id}/delete", function($id) use ($app) {
+        $brand = Brand::find($id);
+        $brand->deleteOneBrand();
+        return $app->['twig']->render('brands.html.twig', array(
+            'brands' => Brand::getAll()
+        ));
+    });
+
     return $app;
 ?>
